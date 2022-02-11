@@ -16,14 +16,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Embeddable
-public class Direccion implements Serializable 
-{
+public class Direccion implements Serializable {
 	private String calle;
 	private String numero;
 	private String codigoPostal;
 	private String departamento;
 	private String piso;
 	private String localidad;
-	
+
 	private static final long serialVersionUID = 1742467524557831202L;
 }

@@ -29,41 +29,41 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "aulas", schema = "universidad")
-public class Aula implements Serializable 
-{
+//@Table(name = "aulas", schema = "universidad")
+@Table(name = "aulas")
+public class Aula implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "numero_aula", nullable = false, length = 5)
 	private Integer numeroAula;
-	
+
 	@Column(name = "medidas")
 	private String medidas;
-	
+
 	@Column(name = "cantidad_pupitres")
 	private Integer cantidadPupitres;
-	
+
 	@Column(name = "tipo_pizarron")
 	@Enumerated(EnumType.STRING)
 	private TipoPizarron tipoPizarron;
-	
+
 	@Column(name = "usuario_creacion", nullable = false)
 	private String usuarioCreacion;
-	
+
 	@Column(name = "fecha_creacion", nullable = false)
 	private Date fechaCreacion;
-	
+
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
-	
-	@ManyToOne(optional = true, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name = "pabellon_id", foreignKey = @ForeignKey(name = "FK_PABELLON_ID"))
+
+	@ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinColumn(name = "pabellon_id", foreignKey = @ForeignKey(name = "FK_PABELLON_ID_AULA"))
 	private Pabellon pabellon;
-	
-	public Aula(Long id, Integer numeroAula, String medidas, Integer cantidadPupitres, TipoPizarron tipoPizarron, String usuarioCreacion) 
-	{
+
+	public Aula(Long id, Integer numeroAula, String medidas, Integer cantidadPupitres, TipoPizarron tipoPizarron,
+			String usuarioCreacion) {
 		this.id = id;
 		this.numeroAula = numeroAula;
 		this.medidas = medidas;
@@ -73,8 +73,7 @@ public class Aula implements Serializable
 	}
 
 	@Override
-	public String toString() 
-	{
+	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Aula [id=");
 		builder.append(id);
@@ -95,16 +94,14 @@ public class Aula implements Serializable
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 	@Override
-	public int hashCode() 
-	{
+	public int hashCode() {
 		return Objects.hash(id, numeroAula);
 	}
 
 	@Override
-	public boolean equals(Object obj) 
-	{
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof Aula))
@@ -112,18 +109,16 @@ public class Aula implements Serializable
 		Aula other = (Aula) obj;
 		return Objects.equals(id, other.id) && Objects.equals(numeroAula, other.numeroAula);
 	}
-	
+
 	@PrePersist
-	private void antesPersistir()
-	{
+	private void antesPersistir() {
 		this.fechaCreacion = new Date();
 	}
-	
+
 	@PreUpdate
-	private void antesActualizar()
-	{
+	private void antesActualizar() {
 		this.fechaModificacion = new Date();
 	}
-	
+
 	private static final long serialVersionUID = 1939834972789863848L;
 }

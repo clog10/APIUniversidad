@@ -25,49 +25,47 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "carreras", schema = "universidad")
-public class Carrera implements Serializable 
-{
+//@Table(name = "carreras", schema = "universidad")
+@Table(name = "carreras")
+public class Carrera implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "nombre", nullable = false, unique = true, length = 80)
 	private String nombre;
-	
+
 	@Column(name = "cantidad_materias")
 	private Integer cantidadMaterias;
-	
+
 	@Column(name = "cantidad_anios")
 	private Integer cantidadAnios;
-	
+
 	@Column(name = "usuario_creacion", nullable = false)
 	private String usuarioCreacion;
-	
+
 	@Column(name = "fecha_creacion", nullable = false)
 	private Date fechaCreacion;
-	
+
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
-	
+
 	@OneToMany(mappedBy = "carrera", fetch = FetchType.LAZY)
 	private Set<Alumno> alumnos;
-	
+
 	@ManyToMany(mappedBy = "carreras", fetch = FetchType.LAZY)
 	private Set<Profesor> profesores;
-	
-	public Carrera(Long id, String nombre, Integer cantidadMaterias, Integer cantidadAnios, String usuarioCreacion) 
-	{
+
+	public Carrera(Long id, String nombre, Integer cantidadMaterias, Integer cantidadAnios, String usuarioCreacion) {
 		this.id = id;
 		this.nombre = nombre;
 		this.cantidadMaterias = cantidadMaterias;
 		this.cantidadAnios = cantidadAnios;
 		this.usuarioCreacion = usuarioCreacion;
 	}
-	
+
 	@Override
-	public String toString() 
-	{
+	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Carrera [id=");
 		builder.append(id);
@@ -86,16 +84,14 @@ public class Carrera implements Serializable
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 	@Override
-	public int hashCode() 
-	{
+	public int hashCode() {
 		return Objects.hash(id, nombre);
 	}
 
 	@Override
-	public boolean equals(Object obj) 
-	{
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof Carrera))
@@ -103,17 +99,16 @@ public class Carrera implements Serializable
 		Carrera other = (Carrera) obj;
 		return Objects.equals(id, other.id) && Objects.equals(nombre, other.nombre);
 	}
-	
+
 	@PrePersist
-	private void antesPersistir()
-	{
+	private void antesPersistir() {
 		this.fechaCreacion = new Date();
 	}
-	
+
 	@PreUpdate
-	private void antesActualizar()
-	{
+	private void antesActualizar() {
 		this.fechaModificacion = new Date();
 	}
+
 	private static final long serialVersionUID = 6751703486552863229L;
 }

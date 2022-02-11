@@ -10,18 +10,15 @@ import com.ibm.academia.restapi.universidad.repositorios.AlumnoRepository;
 import com.ibm.academia.restapi.universidad.repositorios.PersonaRepository;
 
 @Service
-public class AlumnoDAOImpl extends PersonaDAOImpl implements AlumnoDAO 
-{
+public class AlumnoDAOImpl extends PersonaDAOImpl implements AlumnoDAO {
 	@Autowired
-	public AlumnoDAOImpl(@Qualifier("repositorioAlumno")PersonaRepository repository) 
-	{
+	public AlumnoDAOImpl(@Qualifier("repositorioAlumno") PersonaRepository repository) {
 		super(repository);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Iterable<Persona> buscarAlumnosPorNombreCarrera(String nombreCarrera) 
-	{
-		return ((AlumnoRepository)repository).buscarAlumnosPorNombreCarrera(nombreCarrera);
+	public Iterable<Persona> buscarAlumnosPorNombreCarrera(String nombreCarrera) {
+		return ((AlumnoRepository) repository).buscarAlumnosPorNombreCarrera(nombreCarrera);
 	}
 }

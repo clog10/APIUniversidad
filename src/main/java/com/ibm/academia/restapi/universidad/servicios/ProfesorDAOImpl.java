@@ -10,17 +10,17 @@ import com.ibm.academia.restapi.universidad.repositorios.PersonaRepository;
 import com.ibm.academia.restapi.universidad.repositorios.ProfesorRepository;
 
 @Service
-public class ProfesorDAOImpl  extends PersonaDAOImpl implements ProfesorDAO  {
+public class ProfesorDAOImpl extends PersonaDAOImpl implements ProfesorDAO {
 
 	@Autowired
-	public ProfesorDAOImpl(@Qualifier("repositorioProfesor")PersonaRepository repository) {
+	public ProfesorDAOImpl(@Qualifier("repositorioProfesor") PersonaRepository repository) {
 		super(repository);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Iterable<Persona> findProfesoresByCarrera(String carrera) {
-		return ((ProfesorRepository)repository).findProfesoresByCarrera(carrera);
+		return ((ProfesorRepository) repository).findProfesoresByCarrera(carrera);
 	}
 
 }

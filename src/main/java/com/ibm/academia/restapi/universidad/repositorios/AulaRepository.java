@@ -12,8 +12,8 @@ import com.ibm.academia.restapi.universidad.modelo.entidades.Aula;
 public interface AulaRepository extends CrudRepository<Aula, Long> {
 
 	public Iterable<Aula> findAulasByTipoPizarron(TipoPizarron tipoPizarron);
-	
+
 	public Iterable<Aula> findAulasByPabellonNombre(String nombrePabellon);
-	
+
 	public Optional<Aula> findAulaByNumeroAula(Integer numeroAula);
 }

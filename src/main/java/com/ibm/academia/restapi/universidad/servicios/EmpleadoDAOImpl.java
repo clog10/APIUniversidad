@@ -11,17 +11,17 @@ import com.ibm.academia.restapi.universidad.repositorios.EmpleadoRepository;
 import com.ibm.academia.restapi.universidad.repositorios.PersonaRepository;
 
 @Service
-public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO{
+public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO {
 
 	@Autowired
-	public EmpleadoDAOImpl(@Qualifier("repositorioEmpleado")PersonaRepository repository) {
+	public EmpleadoDAOImpl(@Qualifier("repositorioEmpleado") PersonaRepository repository) {
 		super(repository);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Iterable<Persona> findEmpleadoByTipoEmpleado(TipoEmpleado tipoEmpleado) {
-		return ((EmpleadoRepository)repository).findEmpleadoByTipoEmpleado(tipoEmpleado);
+		return ((EmpleadoRepository) repository).findEmpleadoByTipoEmpleado(tipoEmpleado);
 	}
 
 }

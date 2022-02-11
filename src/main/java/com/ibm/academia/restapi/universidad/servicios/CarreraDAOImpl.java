@@ -8,32 +8,27 @@ import com.ibm.academia.restapi.universidad.modelo.entidades.Carrera;
 import com.ibm.academia.restapi.universidad.repositorios.CarreraRepository;
 
 @Service
-public class CarreraDAOImpl extends GenericoDAOImpl<Carrera, CarreraRepository> implements CarreraDAO 
-{
+public class CarreraDAOImpl extends GenericoDAOImpl<Carrera, CarreraRepository> implements CarreraDAO {
 	@Autowired
-	public CarreraDAOImpl(CarreraRepository carreraRepository) 
-	{
+	public CarreraDAOImpl(CarreraRepository carreraRepository) {
 		super(carreraRepository);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Iterable<Carrera> findCarrerasByNombreContains(String nombre) 
-	{
+	public Iterable<Carrera> findCarrerasByNombreContains(String nombre) {
 		return repository.findCarrerasByNombreContains(nombre);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Iterable<Carrera> findCarrerasByNombreContainsIgnoreCase(String nombre) 
-	{
+	public Iterable<Carrera> findCarrerasByNombreContainsIgnoreCase(String nombre) {
 		return repository.findCarrerasByNombreContainsIgnoreCase(nombre);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Iterable<Carrera> findCarrerasByCantidadAniosAfter(Integer cantidadAnios) 
-	{
+	public Iterable<Carrera> findCarrerasByCantidadAniosAfter(Integer cantidadAnios) {
 		return repository.findCarrerasByCantidadAniosAfter(cantidadAnios);
 	}
 

@@ -1,5 +1,6 @@
 package com.ibm.academia.restapi.universidad;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,33 +17,27 @@ public class TestCarrerasJPQL implements CommandLineRunner
 	private CarreraDAO carreraDao;
 	
 	@Override
-	public void run(String... args) throws Exception 
-	{
-		/*Carrera ingSistemas = new Carrera(null, "Ingenieria en Sistemas", 60, 5, "nsegura");
-        Carrera ingIndustrial = new Carrera(null, "Ingenieria Industrial", 55, 5, "nsegura");
-        Carrera ingAlimentos = new Carrera(null, "Ingenieria en Alimentos", 53, 5, "nsegura");
-        Carrera ingElectronica = new Carrera(null, "Ingenieria Electronica", 45, 5, "nsegura");
-        Carrera licSistemas = new Carrera(null, "Licenciatura en Sistemas", 40, 4, "nsegura");
-        Carrera licTurismo = new Carrera(null, "Licenciatura en Turismo", 42, 4, "nsegura");
-        Carrera licYoga = new Carrera(null, "Licenciatura en Yoga", 25, 3, "nsegura");
-        Carrera licRecursos = new Carrera(null, "Licenciatura en Recursos Humanos - RRHH", 33, 3, "nsegura");
-        
-        carreraDao.guardar(ingSistemas);
-        carreraDao.guardar(ingIndustrial);
-        carreraDao.guardar(ingAlimentos);
-        carreraDao.guardar(ingElectronica);
-        carreraDao.guardar(licSistemas);
-        carreraDao.guardar(licTurismo);
-        carreraDao.guardar(licYoga);
-        carreraDao.guardar(licRecursos);*/
-        
-        /*List<Carrera> carreras = (List<Carrera>) carreraDao.findCarrerasByNombreContains("Sistemas");
-        carreras.forEach(System.out::println);*/
+	public void run(String... args) throws Exception {
+		/*List<Carrera> carreras = new ArrayList<Carrera>();
+		carreras.add(new Carrera(null, "Ingenieria en Sistemas", 60, 5, "Clog10"));
+		carreras.add(new Carrera(null, "Ingenieria Idustrial", 45, 5, "Clog10"));
+		carreras.add(new Carrera(null, "Ingenieria en Electronica", 55, 5, "Clog10"));
+		carreras.add(new Carrera(null, "Ingenieria Química", 60, 5, "Clog10"));
+		carreras.add(new Carrera(null, "Ingenieria Alimentos", 40, 5, "Clog10"));
 		
-		/*List<Carrera> carrerasIgnoreCaseUno = (List<Carrera>) carreraDao.findCarrerasByNombreContainsIgnoreCase("SISTEMAS");
-		carrerasIgnoreCaseUno.forEach(System.out::println);*/
+		Iterable<Carrera> carrerasIterable = carreras;
 		
-		/*List<Carrera> carrerasIgnoreCaseUno = (List<Carrera>) carreraDao.findCarrerasByCantidadAniosAfter(3);
-		carrerasIgnoreCaseUno.forEach(System.out::println);*/
+		Iterable<Carrera> carrerasGuardadas = carreraDao.guardarVarios(carrerasIterable);
+		
+		carrerasGuardadas.forEach(System.out::println);*/
+		
+		/*List<Carrera> carreras = (List<Carrera>) carreraDao.findCarrerasByNombreContains("Sistemas");
+		carreras.forEach(System.out::println);*/
+		
+		/*List<Carrera> carrerasIgnoreCase = (List<Carrera>) carreraDao.findCarrerasByNombreContainsIgnoreCase("Sistemas");
+		carrerasIgnoreCase.forEach(System.out::println);*/
+		
+		/*List<Carrera> carrerasAfter = (List<Carrera>) carreraDao.findCarrerasByCantidadAniosAfter(4);
+		carrerasAfter.forEach(System.out::println);*/
 	}
 }

@@ -15,8 +15,7 @@ import com.ibm.academia.restapi.universidad.servicios.AlumnoDAO;
 import com.ibm.academia.restapi.universidad.servicios.CarreraDAO;
 
 @Component
-public class TestUniversidad implements CommandLineRunner
-{
+public class TestUniversidad implements CommandLineRunner{
 	/*@Autowired
 	private CarreraDAO carreraDao;
 	
@@ -24,16 +23,15 @@ public class TestUniversidad implements CommandLineRunner
 	private AlumnoDAO alumnoDao;*/
 	
 	@Override
-	public void run(String... args) throws Exception 
-	{
+	public void run(String... args) throws Exception {
 		//TODO INSERT
 		
-		/*Carrera ingenieriaSistemas = new Carrera(null, "sistemas", 60, 5, "nsegura");
+		/*Carrera ingenieriaSistemas = new Carrera(null, "sistemas", 60, 5, "Clog10");
 		Carrera carrera = carreraDao.guardar(ingenieriaSistemas);
 		System.out.println(carrera.toString());*/
 		
 		/*Direccion direccionAlumno = new Direccion("Calle falsa", "11", "2235", "1506", "15", "Puebla2");
-		Persona alumno = new Alumno(null, "Juanito", "Gomez", "987654321", "nsegura", direccionAlumno);
+		Persona alumno = new Alumno(null, "Juanito", "Gomez", "987654321", "Clog10", direccionAlumno);
 		Persona personaAlumno = alumnoDao.guardar(alumno);
 		System.out.println(personaAlumno.toString());
 		
@@ -43,7 +41,7 @@ public class TestUniversidad implements CommandLineRunner
 		alumnos.forEach(System.out::println);*/
 		
 		//Carrera carrera = null;
-		/*Carrera carrera = new Carrera(null, "Fiseica", 60, 5, "nsegura");
+		/*Carrera carrera = new Carrera(null, "Fisica", 60, 5, "Clog10");
 		
 		Optional<Carrera> oCarrera = carreraDao.buscarPorId(5L);
 		

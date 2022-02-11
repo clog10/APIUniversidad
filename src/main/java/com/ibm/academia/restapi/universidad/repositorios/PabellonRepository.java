@@ -11,5 +11,6 @@ import com.ibm.academia.restapi.universidad.modelo.entidades.Pabellon;
 public interface PabellonRepository extends CrudRepository<Pabellon, Long> {
 
 	public Iterable<Pabellon> findPabellonesByDireccionLocalidad(String localidad);
+
 	public Optional<Pabellon> findPabellonByNombre(String nombre);
 }

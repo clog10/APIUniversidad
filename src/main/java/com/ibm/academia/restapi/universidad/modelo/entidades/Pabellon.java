@@ -27,50 +27,46 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "pabellones", schema = "universidad")
-public class Pabellon implements Serializable 
-{
+//@Table(name = "pabellones", schema = "universidad")
+@Table(name = "pabellones")
+public class Pabellon implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "metros_cuadrados")
 	private Double metrosCuadrados;
-	
+
 	@Column(name = "nombre", nullable = false, length = 60)
 	private String nombre;
-	
+
 	@Embedded
-	@AttributeOverrides({
-		@AttributeOverride(name = "codigoPostal", column = @Column(name = "codigo_postal")),
-		@AttributeOverride(name =  "departamento", column = @Column(name = "departamento"))
-	})
+	@AttributeOverrides({ @AttributeOverride(name = "codigoPostal", column = @Column(name = "codigo_postal")),
+			@AttributeOverride(name = "departamento", column = @Column(name = "departamento")) })
 	private Direccion direccion;
-	
+
 	@Column(name = "usuario_creacion", nullable = false)
 	private String usuarioCreacion;
-	
+
 	@Column(name = "fecha_creacion", nullable = false)
 	private Date fechaCreacion;
-	
+
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
-	
+
 	@OneToMany(mappedBy = "pabellon", fetch = FetchType.LAZY)
 	private Set<Aula> aulas;
-	
-	public Pabellon(Long id, Double metrosCuadrados, String nombre, Direccion direccion, String usuarioCreacion) 
-	{
+
+	public Pabellon(Long id, Double metrosCuadrados, String nombre, Direccion direccion, String usuarioCreacion) {
 		this.id = id;
 		this.metrosCuadrados = metrosCuadrados;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.usuarioCreacion = usuarioCreacion;
 	}
-	
+
 	@Override
-	public String toString() 
-	{
+	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Pabellon [id=");
 		builder.append(id);
@@ -89,16 +85,14 @@ public class Pabellon implements Serializable
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 	@Override
-	public int hashCode() 
-	{
+	public int hashCode() {
 		return Objects.hash(id, nombre);
 	}
 
 	@Override
-	public boolean equals(Object obj) 
-	{
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!(obj instanceof Pabellon))
@@ -106,17 +100,16 @@ public class Pabellon implements Serializable
 		Pabellon other = (Pabellon) obj;
 		return Objects.equals(id, other.id) && Objects.equals(nombre, other.nombre);
 	}
-	
+
 	@PrePersist
-	private void antesPersistir()
-	{
+	private void antesPersistir() {
 		this.fechaCreacion = new Date();
 	}
-	
+
 	@PreUpdate
-	private void antesActualizar()
-	{
+	private void antesActualizar() {
 		this.fechaModificacion = new Date();
 	}
+
 	private static final long serialVersionUID = -3183795736627173109L;
 }

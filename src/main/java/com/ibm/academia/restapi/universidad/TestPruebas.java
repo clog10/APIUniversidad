@@ -51,12 +51,14 @@ public class TestPruebas implements CommandLineRunner {
 
 		/*
 		  Direccion direccionProfesorUno = new Direccion("Abasolo", "125", "68050",
-		  "11", "2", "Oaxaca"); Persona profesorUno = new Profesor(null, "David",
+		  "11", "2", "Oaxaca"); 
+		  Persona profesorUno = new Profesor(null, "David",
 		  "Segura", "55225478", "Clog10", direccionProfesorUno, new
 		  BigDecimal(200000));
 		  
 		  Direccion direccionProfesorDos = new Direccion("Mina", "125", "68050", "11",
-		  "2", "Oaxaca"); Persona profesorDos = new Profesor(null, "Juan", "Ordoñez",
+		  "2", "Oaxaca"); 
+		  Persona profesorDos = new Profesor(null, "Juan", "Ordoñez",
 		  "85475222", "Clog10", direccionProfesorDos, new BigDecimal(190000));
 		  
 		  personaDao.guardar(profesorUno); personaDao.guardar(profesorDos);
@@ -72,9 +74,14 @@ public class TestPruebas implements CommandLineRunner {
 		  
 		  Set<Profesor> profes = new HashSet<Profesor>();
 		  
-		  profesores.forEach(profesor -> { if(profesor instanceof Profesor) { Profesor
-		  profe = (Profesor) profesor; profes.add(profe); profe.setCarreras(carreras);
-		  personaDao.guardar(profe); } });
+		  profesores.forEach(profesor -> { 
+		  	if(profesor instanceof Profesor) { 
+		  		Profesor profe = (Profesor) profesor; 
+		  		profes.add(profe); 
+		  		profe.setCarreras(carreras);
+		  		personaDao.guardar(profe); 
+		  	} 
+		  });
 		  
 		  carrera.setProfesores(profes);
 		  

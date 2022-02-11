@@ -21,30 +21,28 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "profesores", schema = "universidad")
+//@Table(name = "profesores", schema = "universidad")
+@Table(name = "profesores")
 @PrimaryKeyJoinColumn(name = "persona_id")
-public class Profesor extends Persona 
-{
+public class Profesor extends Persona {
 	@Column(name = "sueldo")
 	private BigDecimal sueldo;
-	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinTable(
-			name = "profesor_carrera", schema = "universidad",
-			joinColumns = @JoinColumn(name = "profesor_id"),
-			inverseJoinColumns = @JoinColumn(name = "carrera_id")
-			)
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	// @JoinTable(name = "profesor_carrera", schema = "universidad", joinColumns =
+	// @JoinColumn(name = "profesor_id"), inverseJoinColumns = @JoinColumn(name =
+	// "carrera_id"))
+	@JoinTable(name = "profesor_carrera", joinColumns = @JoinColumn(name = "profesor_id"), inverseJoinColumns = @JoinColumn(name = "carrera_id"))
 	private Set<Carrera> carreras;
-	
-	public Profesor(Long id, String nombre, String apellido, String dni, String usuarioCreacion, Direccion direccion, BigDecimal sueldo) 
-	{
+
+	public Profesor(Long id, String nombre, String apellido, String dni, String usuarioCreacion, Direccion direccion,
+			BigDecimal sueldo) {
 		super(id, nombre, apellido, dni, usuarioCreacion, direccion);
 		this.sueldo = sueldo;
 	}
-	
+
 	@Override
-	public String toString() 
-	{
+	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(super.toString());
 		builder.append("Profesor [sueldo=");
