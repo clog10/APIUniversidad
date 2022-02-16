@@ -21,19 +21,17 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Entity
-//@Table(name = "profesores", schema = "universidad")
-@Table(name = "profesores")
+@Table(name = "profesores", schema = "universidad")
 @PrimaryKeyJoinColumn(name = "persona_id")
 public class Profesor extends Persona {
 	@Column(name = "sueldo")
 	private BigDecimal sueldo;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	// @JoinTable(name = "profesor_carrera", schema = "universidad", joinColumns =
-	// @JoinColumn(name = "profesor_id"), inverseJoinColumns = @JoinColumn(name =
-	// "carrera_id"))
-	@JoinTable(name = "profesor_carrera", joinColumns = @JoinColumn(name = "profesor_id"), inverseJoinColumns = @JoinColumn(name = "carrera_id"))
+	@JoinTable(name = "profesor_carrera", schema = "universidad", joinColumns = @JoinColumn(name = "profesor_id"), inverseJoinColumns = @JoinColumn(name = "carrera_id"))
 	private Set<Carrera> carreras;
+	
+	private static final long serialVersionUID = 951996504952495470L;
 
 	public Profesor(Long id, String nombre, String apellido, String dni, String usuarioCreacion, Direccion direccion,
 			BigDecimal sueldo) {
@@ -51,5 +49,4 @@ public class Profesor extends Persona {
 		return builder.toString();
 	}
 
-	private static final long serialVersionUID = 951996504952495470L;
 }

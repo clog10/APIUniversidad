@@ -27,8 +27,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Entity
-//@Table(name = "pabellones", schema = "universidad")
-@Table(name = "pabellones")
+@Table(name = "pabellones", schema = "universidad")
 public class Pabellon implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,6 +55,8 @@ public class Pabellon implements Serializable {
 
 	@OneToMany(mappedBy = "pabellon", fetch = FetchType.LAZY)
 	private Set<Aula> aulas;
+	
+	private static final long serialVersionUID = -3183795736627173109L;
 
 	public Pabellon(Long id, Double metrosCuadrados, String nombre, Direccion direccion, String usuarioCreacion) {
 		this.id = id;
@@ -111,5 +112,4 @@ public class Pabellon implements Serializable {
 		this.fechaModificacion = new Date();
 	}
 
-	private static final long serialVersionUID = -3183795736627173109L;
 }

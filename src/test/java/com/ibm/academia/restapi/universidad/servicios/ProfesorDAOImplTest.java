@@ -26,7 +26,6 @@ public class ProfesorDAOImplTest {
 		profesorDao.findProfesoresByCarrera(anyString());
 
 		verify(profesorRepository).findProfesoresByCarrera(anyString());
-
 	}
 
 }

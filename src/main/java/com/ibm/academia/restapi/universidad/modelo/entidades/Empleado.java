@@ -23,8 +23,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Entity
-//@Table(name = "empleados", schema = "universidad")
-@Table(name = "empleados")
+@Table(name = "empleados", schema = "universidad")
 @PrimaryKeyJoinColumn(name = "persona_id")
 public class Empleado extends Persona {
 	@Column(name = "sueldo")
@@ -37,6 +36,8 @@ public class Empleado extends Persona {
 	@OneToOne(optional = true, cascade = CascadeType.ALL)
 	@JoinColumn(name = "pabellon_id", foreignKey = @ForeignKey(name = "FK_PABELLON_ID_EMPLEADO"))
 	private Pabellon pabellon;
+	
+	private static final long serialVersionUID = -6079117421503572468L;
 
 	public Empleado(Long id, String nombre, String apellido, String dni, String usuarioCreacion, Direccion direccion,
 			BigDecimal sueldo, TipoEmpleado tipoEmpleado) {
@@ -57,5 +58,4 @@ public class Empleado extends Persona {
 		return builder.toString();
 	}
 
-	private static final long serialVersionUID = -6079117421503572468L;
 }

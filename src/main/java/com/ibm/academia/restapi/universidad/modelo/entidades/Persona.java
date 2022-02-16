@@ -26,8 +26,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Entity
-//@Table(name = "personas", schema = "universidad")
-@Table(name = "personas")
+@Table(name = "personas", schema = "universidad")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Persona implements Serializable {
 	@Id
@@ -56,6 +55,8 @@ public abstract class Persona implements Serializable {
 	@AttributeOverrides({ @AttributeOverride(name = "codigoPostal", column = @Column(name = "codigo_postal")),
 			@AttributeOverride(name = "departamento", column = @Column(name = "departamento")) })
 	private Direccion direccion;
+	
+	private static final long serialVersionUID = -8820253511982392931L;
 
 	public Persona(Long id, String nombre, String apellido, String dni, String usuarioCreacion, Direccion direccion) {
 		this.id = id;
@@ -114,5 +115,4 @@ public abstract class Persona implements Serializable {
 		this.fechaModificacion = new Date();
 	}
 
-	private static final long serialVersionUID = -8820253511982392931L;
 }
