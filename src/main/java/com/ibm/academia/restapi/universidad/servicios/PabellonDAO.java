@@ -9,5 +9,7 @@ public interface PabellonDAO extends GenericoDAO<Pabellon> {
 	public Iterable<Pabellon> findPabellonesByDireccionLocalidad(String localidad);
 
 	public Optional<Pabellon> findPabellonByNombre(String nombre);
+	
+	public Pabellon actualizar(Long pabellonId, Pabellon pabellon);
 
 }

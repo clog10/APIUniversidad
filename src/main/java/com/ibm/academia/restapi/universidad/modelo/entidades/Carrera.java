@@ -16,6 +16,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,15 +38,24 @@ public class Carrera implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull
+	@NotEmpty
 	@Column(name = "nombre", nullable = false, unique = true, length = 80)
 	private String nombre;
 
+	@Positive(message = "El valor debe ser mayor a 0")
+	@Min(45)
 	@Column(name = "cantidad_materias")
 	private Integer cantidadMaterias;
 
+	@Positive(message = "El valor debe ser mayor a 0")
+	@Min(4)
+	@Max(6)
 	@Column(name = "cantidad_anios")
 	private Integer cantidadAnios;
 
+	@NotNull
+	@NotEmpty
 	@Column(name = "usuario_creacion", nullable = false)
 	private String usuarioCreacion;
 
@@ -50,9 +66,11 @@ public class Carrera implements Serializable {
 	private Date fechaModificacion;
 
 	@OneToMany(mappedBy = "carrera", fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"carrera"})
 	private Set<Alumno> alumnos;
 
 	@ManyToMany(mappedBy = "carreras", fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"carreras"})
 	private Set<Profesor> profesores;
 	
 	private static final long serialVersionUID = 6751703486552863229L;

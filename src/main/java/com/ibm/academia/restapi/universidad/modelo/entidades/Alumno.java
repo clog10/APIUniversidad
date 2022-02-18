@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,8 +24,9 @@ import lombok.Setter;
 public class Alumno extends Persona {
 	@ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "carrera_id", foreignKey = @ForeignKey(name = "FK_CARRERA_ID"))
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "alumnos" })
 	private Carrera carrera;
-	
+
 	private static final long serialVersionUID = -3707927656141349583L;
 
 	public Alumno(Long id, String nombre, String apellido, String dni, String usuarioCreacion, Direccion direccion) {

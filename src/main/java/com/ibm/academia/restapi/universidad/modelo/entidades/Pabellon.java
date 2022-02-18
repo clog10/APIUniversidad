@@ -18,6 +18,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,9 +38,12 @@ public class Pabellon implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Positive(message = "El valor debe ser mayor a 0")
 	@Column(name = "metros_cuadrados")
 	private Double metrosCuadrados;
 
+	@NotNull
+	@NotEmpty
 	@Column(name = "nombre", nullable = false, length = 60)
 	private String nombre;
 
@@ -44,6 +52,8 @@ public class Pabellon implements Serializable {
 			@AttributeOverride(name = "departamento", column = @Column(name = "departamento")) })
 	private Direccion direccion;
 
+	@NotNull
+	@NotEmpty
 	@Column(name = "usuario_creacion", nullable = false)
 	private String usuarioCreacion;
 
@@ -54,6 +64,7 @@ public class Pabellon implements Serializable {
 	private Date fechaModificacion;
 
 	@OneToMany(mappedBy = "pabellon", fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"pabellon"})
 	private Set<Aula> aulas;
 	
 	private static final long serialVersionUID = -3183795736627173109L;

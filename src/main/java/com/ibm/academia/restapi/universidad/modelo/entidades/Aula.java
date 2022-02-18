@@ -18,7 +18,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ibm.academia.restapi.universidad.enumeradores.TipoPizarron;
 
 import lombok.Getter;
@@ -35,19 +39,26 @@ public class Aula implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Positive(message = "El valor debe ser mayor a 0")
 	@Column(name = "numero_aula", nullable = false, length = 5)
 	private Integer numeroAula;
 
+	@NotNull
+	@NotEmpty
 	@Column(name = "medidas")
 	private String medidas;
 
+	@Positive(message = "El valor debe ser mayor a 0")
 	@Column(name = "cantidad_pupitres")
 	private Integer cantidadPupitres;
 
+	@NotNull
 	@Column(name = "tipo_pizarron")
 	@Enumerated(EnumType.STRING)
 	private TipoPizarron tipoPizarron;
 
+	@NotNull
+	@NotEmpty
 	@Column(name = "usuario_creacion", nullable = false)
 	private String usuarioCreacion;
 
@@ -59,6 +70,7 @@ public class Aula implements Serializable {
 
 	@ManyToOne(optional = true, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinColumn(name = "pabellon_id", foreignKey = @ForeignKey(name = "FK_PABELLON_ID_AULA"))
+	@JsonIgnoreProperties({"hibernateLazyInitializer","aulas"})
 	private Pabellon pabellon;
 	
 	private static final long serialVersionUID = 1939834972789863848L;

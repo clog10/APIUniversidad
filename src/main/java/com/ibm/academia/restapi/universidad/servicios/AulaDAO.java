@@ -12,4 +12,6 @@ public interface AulaDAO extends GenericoDAO<Aula> {
 	public Iterable<Aula> findAulasByPabellonNombre(String nombrePabellon);
 
 	public Optional<Aula> findAulaByNumeroAula(Integer numeroAula);
+	
+	public Aula actualizar(Long aulaId, Aula aula);
 }
