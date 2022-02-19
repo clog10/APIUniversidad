@@ -14,4 +14,6 @@ public interface AulaDAO extends GenericoDAO<Aula> {
 	public Optional<Aula> findAulaByNumeroAula(Integer numeroAula);
 	
 	public Aula actualizar(Long aulaId, Aula aula);
+	
+	public Aula asociarPabellon(Long aulaId, Long pabellonId);
 }

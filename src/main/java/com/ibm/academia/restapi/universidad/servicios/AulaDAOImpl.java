@@ -9,10 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ibm.academia.restapi.universidad.enumeradores.TipoPizarron;
 import com.ibm.academia.restapi.universidad.excepciones.NotFoundException;
 import com.ibm.academia.restapi.universidad.modelo.entidades.Aula;
+import com.ibm.academia.restapi.universidad.modelo.entidades.Pabellon;
 import com.ibm.academia.restapi.universidad.repositorios.AulaRepository;
 
 @Service
 public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository> implements AulaDAO {
+	
+	@Autowired
+	private PabellonDAO pabellonDao;
 
 	@Autowired
 	public AulaDAOImpl(AulaRepository repository) {
@@ -53,6 +57,21 @@ public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository> implement
 		aulaActualizada = repository.save(oAula.get());
 
 		return aulaActualizada;
+	}
+
+	@Override
+	public Aula asociarPabellon(Long aulaId, Long pabellonId) {
+		Optional<Aula> oAula = repository.findById(aulaId);
+		if(!oAula.isPresent())
+			throw new NotFoundException(String.format("El aula con id: %d no existe", aulaId));
+		
+		Optional<Pabellon> oPabellon = pabellonDao.buscarPorId(pabellonId);
+		if(!oPabellon.isPresent())
+			throw new NotFoundException(String.format("El pabellon con id: %d no existe", pabellonId));
+		
+		oAula.get().setPabellon(oPabellon.get());
+		
+		return repository.save(oAula.get());
 	}
 
 }

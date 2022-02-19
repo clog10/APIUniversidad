@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.academia.restapi.universidad.enumeradores.TipoPizarron;
@@ -163,7 +164,7 @@ public class AulaController {
 	 * Endpoint para buscar aulas por el tipo de pizarron
 	 * @param tipoPizarron
 	 * @return Retorna una lista de aulas
-	 * @exception NotFoundException En caso de que falle buscando las aulaa o no
+	 * @exception NotFoundException En caso de que falle buscando las aulas o no
 	 *                              existan
 	 * @author CJGL - 18-02-2022
 	 */
@@ -174,6 +175,54 @@ public class AulaController {
 			throw new NotFoundException("No existen aulas con ese tipo de pizarron");
 			
 		return new ResponseEntity<List<Aula>>(aulas, HttpStatus.OK);
+	}
+	
+	/**
+	 * Endpoint para buscar aulas por el nombre de pabellon asociado
+	 * @param nombrePabellon
+	 * @return Retorna una lista de aulas
+	 * @exception NotFoundException En caso de que falle buscando las aulas o no
+	 *                              existan
+	 * @author CJGL - 18-02-2022
+	 */
+	@GetMapping("/aulas/nombrePabellon/{nombrePabellon}")
+	public ResponseEntity<?> buscarAulasPorNombrePabellon(@PathVariable String nombrePabellon){
+		List<Aula> aulas = (List<Aula>) aulaDao.findAulasByPabellonNombre(nombrePabellon);
+		if(aulas.isEmpty())
+			throw new NotFoundException("No existen aulas asociadas a ese pabellon");
+			
+		return new ResponseEntity<List<Aula>>(aulas, HttpStatus.OK);
+	}
+	
+	/**
+	 * Enpoint para buscar un aula por su número
+	 * @param numeroAula
+	 * @return Retorna el aula
+	 * @exception NotFoundException En caso de que falle buscando el aula o no
+	 *                              exista
+	 * @author CJGL - 18-02-2022                          
+	 */
+	@GetMapping("/aula/numeroAula/{numeroAula}")
+	public ResponseEntity<?> buscarAulaPorNumeroAula(@PathVariable Integer numeroAula){
+		Optional<Aula> oAula = aulaDao.findAulaByNumeroAula(numeroAula);
+		
+		if(!oAula.isPresent())
+			throw new NotFoundException("No existe aula con ese numero");
+		
+		return new ResponseEntity<Aula>(oAula.get(),HttpStatus.OK);
+	}
+	
+	/**
+	 * Endpoint para asociar un pabellon a una aula
+	 * @param aulaId
+	 * @param pabellonId
+	 * @return Retorna el aula con su pabellon
+	 * @author CJGL - 18-02-2022
+	 */
+	@PutMapping("/aula/asociar-pabellon")
+	public ResponseEntity<?> asociarPabellon(@RequestParam Long aulaId, Long pabellonId){
+		Aula aula = aulaDao.asociarPabellon(aulaId, pabellonId);
+		return new ResponseEntity<Aula>(aula, HttpStatus.OK);
 	}
 
 }
