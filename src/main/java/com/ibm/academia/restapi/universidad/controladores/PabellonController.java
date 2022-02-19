@@ -37,7 +37,7 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping("/restapi")
 public class PabellonController {
 
-	private final static Logger logger = LoggerFactory.getLogger(CarreraController.class);
+	private final static Logger logger = LoggerFactory.getLogger(PabellonController.class);
 
 	@Autowired
 	private PabellonDAO pabellonDao;

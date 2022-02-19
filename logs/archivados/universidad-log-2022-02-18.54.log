@@ -1,0 +1,35 @@
+2022-02-18 23:41:42,093 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-18 23:41:42,098 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-18 23:41:44,852 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-18 23:41:45,949 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-02-18 23:41:46,742 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-9081"]
+2022-02-18 23:41:46,748 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9081 (http) with context path '/api/v1/universidad'
+2022-02-18 23:41:49,194 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ApiUniversidadMApplication in 12.203 seconds (JVM running for 233.637)
+2022-02-18 23:41:49,210 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-02-18 23:42:25,225 INFO org.apache.juli.logging.DirectJDKLog [http-nio-9081-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-18 23:42:25,225 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-9081-exec-2] Initializing Servlet 'dispatcherServlet'
+2022-02-18 23:42:25,228 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-9081-exec-2] Completed initialization in 2 ms
+2022-02-18 23:44:24,682 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-9081-exec-7] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2022-02-18 23:46:03,110 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-9081-exec-3] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2022-02-18 23:46:07,911 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-9081-exec-5] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('}' (code 125)): was expecting double-quote to start field name; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('}' (code 125)): was expecting double-quote to start field name<EOL> at [Source: (PushbackInputStream); line: 17, column: 2]]
+2022-02-18 23:48:44,078 INFO org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(20)-127.0.0.1] Application shutdown requested.
+2022-02-18 23:48:44,116 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [RMI TCP Connection(20)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-18 23:48:44,118 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(20)-127.0.0.1] HikariPool-2 - Shutdown initiated...
+2022-02-18 23:48:44,138 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(20)-127.0.0.1] HikariPool-2 - Shutdown completed.
+2022-02-18 23:51:23,019 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
+2022-02-18 23:51:23,072 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ApiUniversidadMApplication using Java 17.0.1 on DESKTOP-E4B00NC with PID 8132 (C:\Users\carlo\Documents\Curso IBM\APIUniversidadM\target\classes started by carlo in C:\Users\carlo\Documents\Curso IBM\APIUniversidadM)
+2022-02-18 23:51:23,075 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-02-18 23:51:23,372 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-02-18 23:51:23,373 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-02-18 23:51:27,034 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-18 23:51:27,574 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 510 ms. Found 6 JPA repository interfaces.
+2022-02-18 23:51:29,729 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9081 (http)
+2022-02-18 23:51:29,770 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-9081"]
+2022-02-18 23:51:29,772 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-02-18 23:51:29,773 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-02-18 23:51:30,141 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-02-18 23:51:30,143 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 6768 ms
+2022-02-18 23:51:30,623 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-18 23:51:30,781 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.33
+2022-02-18 23:51:31,283 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-18 23:51:31,617 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...

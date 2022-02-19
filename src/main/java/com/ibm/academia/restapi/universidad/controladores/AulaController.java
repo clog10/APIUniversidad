@@ -37,7 +37,7 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping("/restapi")
 public class AulaController {
 
-	private final static Logger logger = LoggerFactory.getLogger(CarreraController.class);
+	private final static Logger logger = LoggerFactory.getLogger(AulaController.class);
 
 	@Autowired
 	private AulaDAO aulaDao;

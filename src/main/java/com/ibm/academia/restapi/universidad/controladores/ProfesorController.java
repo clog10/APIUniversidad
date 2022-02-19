@@ -32,7 +32,7 @@ import com.ibm.academia.restapi.universidad.servicios.ProfesorDAO;
 @RequestMapping("/restapi")
 public class ProfesorController {
 
-	private final static Logger logger = LoggerFactory.getLogger(AlumnoController.class);
+	private final static Logger logger = LoggerFactory.getLogger(ProfesorController.class);
 
 	@Autowired
 	@Qualifier("profesorDAOImpl")
@@ -143,7 +143,7 @@ public class ProfesorController {
 	 * @return Retorna el profesor con su asociación
 	 * @author CJGL - 16-02-2022
 	 */
-	@PutMapping("/profesor/asociar-carrera")
+	@PutMapping("/profesor/asociar-carrera-profesor")
 	public ResponseEntity<?> asociarCarrera(@RequestParam Long carreraId, @RequestParam Long profesorId) {
 		Persona profesor = ((ProfesorDAO) profesorDao).asociarCarreraProfesor(carreraId, profesorId);
 		return new ResponseEntity<Persona>(profesor, HttpStatus.OK);

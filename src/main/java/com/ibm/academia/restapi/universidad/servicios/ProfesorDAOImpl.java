@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ibm.academia.restapi.universidad.excepciones.BadRequestException;
 import com.ibm.academia.restapi.universidad.excepciones.NotFoundException;
 import com.ibm.academia.restapi.universidad.modelo.entidades.Carrera;
 import com.ibm.academia.restapi.universidad.modelo.entidades.Persona;
@@ -41,6 +42,9 @@ public class ProfesorDAOImpl extends PersonaDAOImpl implements ProfesorDAO {
 
 		if (!oProfesor.isPresent())
 			throw new NotFoundException(String.format("El profesor con id: %d no existe", profesorId));
+		
+		if(!(oProfesor.get() instanceof Profesor))
+			throw new BadRequestException("La persona no es de tipo profesor ");
 
 		Optional<Carrera> oCarrera = carreraDao.buscarPorId(carreraId);
 

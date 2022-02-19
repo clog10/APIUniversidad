@@ -109,7 +109,7 @@ public class AlumnoController {
 	 * @param alumnoId
 	 * @param alumno
 	 * @param result
-	 * @return Retorna la carrera actualizada
+	 * @return Retorna el alumno actualizado
 	 * @author CJGL - 16-02-2022
 	 */
 	@PutMapping("/alumno/actualizar/alumnoId/{alumnoId}")
