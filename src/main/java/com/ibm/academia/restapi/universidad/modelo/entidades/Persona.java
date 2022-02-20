@@ -17,6 +17,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -40,15 +42,23 @@ public abstract class Persona implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull(message = "No puede ser nulo")
+	@NotEmpty(message = "No puede ser vacío")
 	@Column(name = "nombre", nullable = false, length = 60)
 	private String nombre;
 
+	@NotNull(message = "No puede ser nulo")
+	@NotEmpty(message = "No puede ser vacío")
 	@Column(name = "apellido", nullable = false, length = 60)
 	private String apellido;
 
+	@NotNull(message = "No puede ser nulo")
+	@NotEmpty(message = "No puede ser vacío")
 	@Column(name = "dni", nullable = false, unique = true, length = 10)
 	private String dni;
 
+	@NotNull(message = "No puede ser nulo")
+	@NotEmpty(message = "No puede ser vacío")
 	@Column(name = "usuario_creacion", nullable = false)
 	private String usuarioCreacion;
 
@@ -58,6 +68,7 @@ public abstract class Persona implements Serializable {
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
 
+	@NotNull(message = "No puede ser nulo")
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "codigoPostal", column = @Column(name = "codigo_postal")),
 			@AttributeOverride(name = "departamento", column = @Column(name = "departamento")) })

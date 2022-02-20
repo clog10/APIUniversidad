@@ -38,24 +38,26 @@ public class Carrera implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
-	@NotEmpty
+	@NotNull(message = "No puede ser nulo")
+	@NotEmpty(message = "No puede ser vacío")
 	@Column(name = "nombre", nullable = false, unique = true, length = 80)
 	private String nombre;
 
 	@Positive(message = "El valor debe ser mayor a 0")
 	@Min(45)
+	@NotNull(message = "No puede ser nulo")
 	@Column(name = "cantidad_materias")
 	private Integer cantidadMaterias;
 
 	@Positive(message = "El valor debe ser mayor a 0")
 	@Min(4)
 	@Max(6)
+	@NotNull(message = "No puede ser nulo")
 	@Column(name = "cantidad_anios")
 	private Integer cantidadAnios;
 
-	@NotNull
-	@NotEmpty
+	@NotNull(message = "No puede ser nulo")
+	@NotEmpty(message = "No puede ser vacío")
 	@Column(name = "usuario_creacion", nullable = false)
 	private String usuarioCreacion;
 

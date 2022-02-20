@@ -38,22 +38,24 @@ public class Pabellon implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull(message = "No puede ser nulo")
 	@Positive(message = "El valor debe ser mayor a 0")
 	@Column(name = "metros_cuadrados")
 	private Double metrosCuadrados;
 
-	@NotNull
-	@NotEmpty
+	@NotNull(message = "No puede ser nulo")
+	@NotEmpty(message = "No puede ser vacío")
 	@Column(name = "nombre", nullable = false, length = 60)
 	private String nombre;
 
+	@NotNull(message = "No puede ser nulo")
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "codigoPostal", column = @Column(name = "codigo_postal")),
 			@AttributeOverride(name = "departamento", column = @Column(name = "departamento")) })
 	private Direccion direccion;
 
-	@NotNull
-	@NotEmpty
+	@NotNull(message = "No puede ser nulo")
+	@NotEmpty(message = "No puede ser vacío")
 	@Column(name = "usuario_creacion", nullable = false)
 	private String usuarioCreacion;
 

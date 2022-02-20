@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.ibm.academia.restapi.universidad.enumeradores.TipoEmpleado;
 
@@ -26,9 +27,11 @@ import lombok.Setter;
 @Table(name = "empleados", schema = "universidad")
 @PrimaryKeyJoinColumn(name = "persona_id")
 public class Empleado extends Persona {
+	@NotNull(message = "No puede ser nulo")
 	@Column(name = "sueldo")
 	private BigDecimal sueldo;
 
+	@NotNull(message = "No puede ser nulo")
 	@Column(name = "tipo_empleado")
 	@Enumerated(EnumType.STRING)
 	private TipoEmpleado tipoEmpleado;

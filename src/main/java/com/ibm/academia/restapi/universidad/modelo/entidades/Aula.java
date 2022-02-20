@@ -39,12 +39,13 @@ public class Aula implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull(message = "No puede ser nulo")
 	@Positive(message = "El valor debe ser mayor a 0")
 	@Column(name = "numero_aula", nullable = false, length = 5)
 	private Integer numeroAula;
 
-	@NotNull
-	@NotEmpty
+	@NotNull(message = "No puede ser nulo")
+	@NotEmpty(message = "No puede ser vacío")
 	@Column(name = "medidas")
 	private String medidas;
 
@@ -52,13 +53,13 @@ public class Aula implements Serializable {
 	@Column(name = "cantidad_pupitres")
 	private Integer cantidadPupitres;
 
-	@NotNull
+	@NotNull(message = "No puede ser nulo")
 	@Column(name = "tipo_pizarron")
 	@Enumerated(EnumType.STRING)
 	private TipoPizarron tipoPizarron;
 
-	@NotNull
-	@NotEmpty
+	@NotNull(message = "No puede ser nulo")
+	@NotEmpty(message = "No puede ser vacío")
 	@Column(name = "usuario_creacion", nullable = false)
 	private String usuarioCreacion;
 
