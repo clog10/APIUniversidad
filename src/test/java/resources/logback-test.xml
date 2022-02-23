@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <property name="LOGS" value="./logs"/>
+    <property name="LOGS" value="./logs-test"/>
 
     <appender name="consola" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -16,7 +16,7 @@
         </encoder>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOGS}/archived/universidad-test-log-%d{yyyy-MM-dd}.%i.log
+            <fileNamePattern>${LOGS}/archivados/universidad-test-log-%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>6KB</maxFileSize>

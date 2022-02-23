@@ -60,6 +60,7 @@ public class AulaDAOImpl extends GenericoDAOImpl<Aula, AulaRepository> implement
 	}
 
 	@Override
+	@Transactional
 	public Aula asociarPabellon(Long aulaId, Long pabellonId) {
 		Optional<Aula> oAula = repository.findById(aulaId);
 		if(!oAula.isPresent())
